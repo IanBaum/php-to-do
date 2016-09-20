@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <title>Tasks</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Tasks</h1>
+      </div>
+
+      {% if tasks is not empty %}
+        <p>Here are all your tasks:</p>
+        <ul>
+          {% for task in tasks %}
+            <li>{{ task.getDescription }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <form action='/tasks' method='post'>
+        <label for='description'>Task description</label>
+        <input id='description' name='description' type='text'>
+        <button type='submit'>Add task</button>
+      </form>
+      <form action='/delete_tasks' method='post'>
+        <button type='submit'>Clear</button>
+      </form>
+
+      <p><a href='/'>Home</a></p>
+    </div>
+  </body>
+</html>
