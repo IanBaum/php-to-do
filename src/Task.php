@@ -27,7 +27,8 @@
         {
             $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
             $tasks = array();
-            foreach($returned_tasks as $task){
+            foreach($returned_tasks as $task)
+            {
                 $description = $task['description'];
                 $new_task = new Task($description);
                 array_push($tasks, $new_task);
@@ -37,7 +38,7 @@
 
         static function deleteAll()
         {
-            $_SESSION['list_of_tasks'] = array();
+            $GLOBALS['DB']->exec("DELETE FROM tasks;");
         }
     }
 ?>
